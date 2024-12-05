@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import authenticate, login as auth_login
+from django.contrib.auth.decorators import login_required
 from django.conf import settings
 from django.core.files.storage import FileSystemStorage
 import cv2
@@ -42,7 +43,7 @@ def signup(request):
 
     return render(request, 'signup.html', {'form': form})
 
-
+@login_required()
 def profile(request):
     img_url = None
     result1 = None
