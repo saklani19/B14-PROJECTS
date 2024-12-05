@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skin Disease Diagnosis</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #F4F7FB;
+            color: #333;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            width: 70%;
+            margin: auto;
+            padding: 30px;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        h2 {
+            color: #2C3E50;
+            font-size: 3em; /* Increased size for heading */
+            font-weight: bold;
+            text-align: center; /* Centers the heading */
+        }
+        .image-container {
+            text-align: center;
+        }
+        .image-container img {
+            width: 275px; 
+            height: 182px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 3px solid #BDC3C7;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            background-color: #ECF0F1;
+            margin: 8px;
+            padding: 12px;
+            border-radius: 6px;
+            color: #34495E;
+        }
+        .message {
+            color: #27AE60;
+            text-align: center;
+            margin-top: 20px;
+        }
+        input[type="file"] {
+            background-color: #3498DB;
+            color: white;
+            padding: 15px 20px; /* Increased padding for a larger button */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 20px; /* Increased font size */
+            display: inline-block;
+            margin: 15px 0;
+        }
+        input[type="file"]:hover {
+            background-color: #2980B9;
+        }
+        input[type="submit"] {
+            background-color: #2ECC71;
+            color: white;
+            padding: 15px 25px; /* Increased padding for a larger button */
+            border: none;
+            border-radius: 5px;
+            font-size: 20px; /* Increased font size */
+            cursor: pointer;
+            margin-top: 15px;
+        }
+        input[type="submit"]:hover {
+            background-color: #27AE60;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Skin Pro</h2>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div style="display: flex; justify-content: center; align-items: center;">
+                <input type="file" name="uploadImage" accept="image/*" required>
+            </div>
+            <div style="display: flex; justify-content: center; align-items: center;">
+                <input type="submit" value="Upload">
+            </div>
+        </form>
+        <div>
+            {% if img %}
+                <h2>Disease Image:</h2>
+                <div class="image-container">
+                    <img src="{{ img }}" alt="Original Image">
+                </div>
+            {% endif %}
+            <br><br>
+            {% if obj1 %}
+                <h2>{{ obj1 }}</h2>
+            {% endif %}
+            <br><br>
+            {% if obj2 %}
+                <h2>{{ disease_name }}</h2>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
