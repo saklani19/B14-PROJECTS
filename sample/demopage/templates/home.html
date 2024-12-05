@@ -5,162 +5,129 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', Arial, sans-serif;
-        }
-
         body {
-            background: linear-gradient(135deg, #e3fdf5, #81c784);
-            color: #054C33;
-            min-height: 100vh;
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            background: white;
+            color: #333;
             display: flex;
             flex-direction: column;
+            min-height: 100vh;
         }
-
         header {
-            background-color: #81C784;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        nav {
-            display: flex;
-            justify-content: flex-end;
-            padding: 20px 50px;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-
-        nav ul li {
-            margin: 0 10px;
-        }
-
-        nav ul li a {
-            text-decoration: none;
-            font-size: 18px;
-            font-weight: bold;
-            color: white;
-            background: #2B9348;
-            padding: 10px 20px;
-            border-radius: 8px;
-            transition: transform 0.3s ease, background-color 0.3s ease;
-        }
-
-        nav ul li a:hover {
-            background-color: #218c3a;
-            transform: scale(1.05);
-        }
-
-        main {
             display: flex;
             justify-content: center;
             align-items: center;
-            flex: 1;
-            padding: 20px;
+            padding: 15px 20px;
+            background-color: #1abc9c; /* New Green Shade */
+            color: white;
         }
-
-        .content {
+        header .brand {
+            font-size: 28px;
+            font-weight: bold;
+        }
+        main {
+            flex: 1;
             display: flex;
             align-items: center;
-            max-width: 1100px;
-            gap: 40px;
-            background: #fff;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-            animation: fadeIn 1s ease-in-out;
-        }
+            justify-content: space-around;
+            padding: 20px;
+            gap: 20px;
+            text-align: left;
 
-        .text-section {
+            background-color: #d9fff4;
+        }
+        .content {
             flex: 1;
+            max-width: 50%;
             text-align: center;
         }
-
-        .text-section h1 {
-            font-size: 36px;
-            color: #054C33;
-            margin-bottom: 20px;
+        .content h1 {
+            font-size: 50px;
+            margin: 0 0 10px;
         }
-
-        .text-section p {
-            font-size: 16px;
-            margin-bottom: 20px;
+        .content p {
+            font-size: 18px;
+            margin: 10px 0;
             color: #555;
         }
-
-        .image-section {
+        .content .cta a {
+            text-decoration: none;
+            background-color: #16a085; /* Darker Green for Buttons */
+            color: white;
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-size: 18px;
+            margin: 10px 5px 0 0;
+            display: inline-block;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+        .content .cta a:hover {
+            transform: scale(1.1);
+            background-color: #1abc9c; /* Light Green on Hover */
+        }
+        .carousel {
+            position: relative;
             flex: 1;
-            display: flex;
-            justify-content: center;
-        }
-
-        .image-section img {
-            max-width: 90%;
+            max-width: 45%;
+            height: 300px;
+            overflow: hidden;
             border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
-
-        .image-section img:hover {
-            transform: scale(1.05);
+        .carousel img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            position: absolute;
         }
-
+        .carousel img.active {
+            opacity: 1;
+        }
         footer {
             text-align: center;
-            padding: 20px;
-            background-color: #81C784;
+            padding: 10px;
+            background-color: #1abc9c; /* Same Green as Header */
             color: white;
-            font-size: 16px;
-        }
-
-        footer p {
-            margin: 0;
-        }
-
-        /* Animations */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            font-size: 14px;
         }
     </style>
 </head>
 <body>
     <header>
-        <nav>
-            <ul>
-                <li><a href="/login">Login</a></li>
-                <li><a href="/signup">Sign Up</a></li>
-            </ul>
-        </nav>
+        <div class="brand">Skin Pro</div>
     </header>
-
     <main>
         <div class="content">
-            <div class="text-section">
-                <h1>Welcome to the Home Page!</h1>
-                <p>Welcome to the Advanced Skin Disease Diagnosis platform leveraging image processing technology.</p>
-                <p>This project is proudly created by Team1.</p>
-            </div>
-            <div class="image-section">
-                <img src="https://img.freepik.com/free-vector/tiny-dermatologists-examining-skin-patient-hospital_74855-17896.jpg?t=st=1729444902~exp=1729448502~hmac=c8503e1edc22a8e107009c47c1645590d3c1ebb8dd3602efb2dfbba1af055e6d&w=996" alt="Examining Skin">
+            <h1>Welcome to Skin Disease Diagnosis</h1>
+            <p>Your health, our priority. Get detailed skin insights instantly!</p>
+            <div class="cta">
+                <a href="/login">Log In</a>
+                <a href="/signup">Get Started</a>
             </div>
         </div>
+        <div class="carousel">
+            <img src="https://via.placeholder.com/800x300/FF5733/FFFFFF?text=Skin+Analysis" class="active" alt="Skin Analysis">
+            <img src="https://via.placeholder.com/800x300/33C4FF/FFFFFF?text=Personalized+Care" alt="Personalized Care">
+            <img src="https://via.placeholder.com/800x300/8DFF33/FFFFFF?text=Healthy+Glow" alt="Healthy Glow">
+        </div>
     </main>
-
     <footer>
-        <p>&copy; HomePage by Team1</p>
+        &copy; 2024 Skin Analysis. All Rights Reserved.
     </footer>
+    <script>
+        let currentIndex = 0;
+        const images = document.querySelectorAll('.carousel img');
+        
+        function changeImage() {
+            images[currentIndex].classList.remove('active');
+            currentIndex = (currentIndex + 1) % images.length;
+            images[currentIndex].classList.add('active');
+        }
+        
+        setInterval(changeImage, 3000); // Change image every 3 seconds
+    </script>
 </body>
 </html>
-

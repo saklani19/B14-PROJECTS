@@ -3,170 +3,250 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up</title>
+    <title>Sign Up Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
-        }
-
         body {
-            background-color: #E6F4EA;
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            color: #333;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            height: 100vh;
-            overflow: hidden;
+            min-height: 100vh;
+            background-image: url('https://asianbeautyessentials.com/cdn/shop/articles/Cropped_view_of_woman_hand_with_skincare_cream_tube_over_plate_1200x.jpg?v=1676107718');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
         }
-
-        .container {
+        header {
             display: flex;
-            flex: 1;
-            width: 100vw;
-        }
-
-        .form-section {
-            flex: 1;
-            padding: 40px;
-            background: linear-gradient(to right, #A7D7C5, #81C784, #C8E6C9);
-            color: white;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .main-heading {
-            text-align: center;
-            margin-bottom: 20px;
-            font-size: 30px;
-            color: #054C33;
-        }
-
-        .signup-container {
-            width: 100%;
-        }
-
-        .signup-container h2 {
-            font-size: 24px;
-            margin-bottom: 20px;
+            justify-content: center;
+            align-items: center;
+            padding: 15px 20px;
+            background-color: rgba(26, 188, 133, 0.8);
             color: white;
         }
-
-        .input-field {
-            margin-bottom: 15px;
-            width: 100%;
-        }
-
-        .input-field label {
-            display: block;
-            margin-bottom: 5px;
-            color: white;
-        }
-
-        .input-field input {
-            width: 100%;
-            padding: 12px;
-            border: none;
-            border-radius: 5px;
-            background-color: #81C784;
-            color: white;
-            font-size: 16px;
-            transition: background-color 0.3s, transform 0.3s;
-        }
-
-        .input-field input::placeholder {
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        .input-field input:focus {
-            background-color: #A7D7C5;
-            outline: none;
-            transform: scale(1.02);
-        }
-
-        .btn {
-            padding: 12px;
-            background-color: #054C33;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
+        header .brand {
+            font-size: 28px;
             font-weight: bold;
-            transition: background-color 0.3s;
-            width: 100%;
         }
-
-        .btn:hover {
-            background-color: #2B9348;
-        }
-
-        .error-message {
-            color: #FF4D4D;
-            margin-top: 10px;
-        }
-
-        .image-section {
+        main {
             flex: 1;
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #ffffff;
+            padding: 20px;
         }
-
-        .image-section img {
-            max-width: 90%;
-            height: auto;
-            border-radius: 0;
+        .signup-form {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 320px;
         }
-
+        .signup-form h2 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            text-align: center;
+            color: #333;
+        }
+        .signup-form input {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+        .signup-form button {
+            width: 100%;
+            padding: 10px;
+            background-color: #16a085;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .signup-form button:hover {
+            background-color: #1abc9c;
+        }
+        .signup-form .link {
+            text-align: center;
+            margin-top: 10px;
+        }
+        .signup-form .link a {
+            color: #16a085;
+            text-decoration: none;
+            font-size: 14px;
+        }
         footer {
             text-align: center;
-            color: #054C33;
-            margin-top: 20px;
+            padding: 10px;
+            background-color: rgba(26, 188, 133, 0.8);
+            color: white;
+            font-size: 14px;
         }
-
-        .login-link {
-            text-align: center;
-            margin-top: 20px;
-            color: #ffffff;
+        .error {
+            color: red;
+            font-size: 12px;
+            margin-top: 8px;
         }
-
-        .login-link a {
-            color: #FFFFFF;
-            text-decoration: underline;
+        .eye-icon {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            font-size: 18px;
+        }
+        .password-container {
+            position: relative;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="form-section">
-            <h1 class="main-heading">Welcome to Skin Disease Diagnosis Signup Page!</h1>
-            <div class="signup-container">
-                <h2>Sign Up</h2>
-                <form method="post">
-                    {% csrf_token %}
-                    {% for field in form %}
-                        <div class="input-field">
-                            <label>{{ field.label }}</label>
-                            {{ field }}
-                            {% if field.errors %}
-                                <p class="error-message">{{ field.errors }}</p>
-                            {% endif %}
-                        </div>
-                    {% endfor %}
-                    <button type="submit" class="btn">Sign Up</button>
-                </form>
-                <p class="login-link">Already signed up? <a href="{% url 'login' %}">Click here</a></p>
+    <header>
+        <div class="brand">Skin Pro</div>
+    </header>
+    <main>
+        <div class="signup-form">
+            <h2>Sign Up</h2>
+            <form id="signupForm" onsubmit="return validateForm(event)">
+                <div>
+                    <input type="text" id="name" name="name" placeholder="Enter Full Name">
+                    <div id="name-error" class="error"></div>
+                </div>
+                <div>
+                    <input type="text" id="username" name="username" placeholder="Enter Username">
+                    <div id="username-error" class="error"></div>
+                </div>
+                <div>
+                    <input type="email" id="email" name="email" placeholder="Enter Email">
+                    <div id="email-error" class="error"></div>
+                </div>
+                <div class="password-container">
+                    <input type="password" id="password" name="password" placeholder="Enter Password">
+                    <div id="password-error" class="error"></div>
+                    <i id="eye-icon" class="fa fa-eye eye-icon" onclick="togglePasswordVisibility()"></i>
+                </div>
+                <div>
+                    <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm Password">
+                    <div id="confirm-password-error" class="error"></div>
+                </div>
+                <button type="submit">Sign Up</button>
+            </form>
+            <div class="link">
+                <p>Already have an account? <a href="/login">Log In</a></p>
             </div>
-            <footer>
-                <p>&copy; Signup page by Team1</p>
-            </footer>
         </div>
-        <div class="image-section">
-            <img src="https://img.freepik.com/free-vector/hand-drawn-flat-design-melanoma-illustration_23-2149381786.jpg?t=st=1729455696~exp=1729459296~hmac=84b6cf39efc9c72187e17d93d8f6481b0e85d8935a6df56984073dad0df55101&w=740" alt="Signup illustration">
-        </div>
-    </div>
+    </main>
+    <footer>
+        &copy; 2024 Skin Analysis. All Rights Reserved.
+    </footer>
+
+    <script>
+        function validateForm(event) {
+            event.preventDefault(); // Prevent form submission
+
+            const name = document.getElementById('name').value;
+            const username = document.getElementById('username').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+            
+            let isValid = true;
+
+            // Clear previous error messages
+            document.getElementById('name-error').textContent = '';
+            document.getElementById('username-error').textContent = '';
+            document.getElementById('email-error').textContent = '';
+            document.getElementById('password-error').textContent = '';
+            document.getElementById('confirm-password-error').textContent = '';
+
+            // Validate Name
+            if (name.trim() === '') {
+                document.getElementById('name-error').textContent = 'Please fill out the name field.';
+                isValid = false;
+            }
+
+            // Validate Username
+            if (username.trim() === '') {
+                document.getElementById('username-error').textContent = 'Please fill out the username field.';
+                isValid = false;
+            } else if (username.length < 3) {
+                document.getElementById('username-error').textContent = 'Username must be at least 3 characters long.';
+                isValid = false;
+            }
+
+            // Check if username already exists in localStorage
+            let users = JSON.parse(localStorage.getItem('users')) || [];
+            if (users.some(user => user.username === username)) {
+                document.getElementById('username-error').textContent = 'Username already exists. Please choose another one.';
+                isValid = false;
+            }
+
+            // Validate Email
+            if (email.trim() === '') {
+                document.getElementById('email-error').textContent = 'Please fill out the email field.';
+                isValid = false;
+            } else if (!/\S+@\S+\.\S+/.test(email)) {
+                document.getElementById('email-error').textContent = 'Please enter a valid email.';
+                isValid = false;
+            }
+
+            // Validate Password
+            if (password.trim() === '') {
+                document.getElementById('password-error').textContent = 'Please fill out the password field.';
+                isValid = false;
+            } else if (password.length < 6) {
+                document.getElementById('password-error').textContent = 'Password must be at least 6 characters long.';
+                isValid = false;
+            }
+
+            // Validate Confirm Password
+            if (confirmPassword !== password) {
+                document.getElementById('confirm-password-error').textContent = 'Passwords do not match.';
+                isValid = false;
+            }
+
+            // If valid, store user data and redirect to login page
+            if (isValid) {
+                const newUser = {
+                    name: name,
+                    username: username,
+                    email: email,
+                    password: password
+                };
+
+                users.push(newUser); // Add new user to users array
+                localStorage.setItem('users', JSON.stringify(users)); // Save to localStorage
+                window.location.href = '/login'; // Redirect to login page
+            }
+
+            return isValid;
+        }
+
+        function togglePasswordVisibility() {
+            const passwordField = document.getElementById('password');
+            const confirmPasswordField = document.getElementById('confirm-password');
+            const eyeIcon = document.getElementById('eye-icon');
+            
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+                confirmPasswordField.type = 'text';
+                eyeIcon.classList.remove('fa-eye');
+                eyeIcon.classList.add('fa-eye-slash');
+            } else {
+                passwordField.type = 'password';
+                confirmPasswordField.type = 'password';
+                eyeIcon.classList.remove('fa-eye-slash');
+                eyeIcon.classList.add('fa-eye');
+            }
+        }
+    </script>
 </body>
 </html>
