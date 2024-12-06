@@ -115,14 +115,16 @@
     <main>
         <div class="login-form">
             <h2>Login</h2>
-            <form onsubmit="return login(event)">
+            <form method="POST">
+                {% csrf_token %}
                 <div>
                     <input type="text" name="username" placeholder="Enter Username">
+                    {% if msg %}
+                        <div class="error">{{ msg }}</div> <!-- Display error message -->
+                    {% endif %}
                 </div>
-                <div class="password-container">
+                <div>
                     <input type="password" name="password" placeholder="Enter Password">
-                    <div class="error"></div>
-                    <i id="eye-icon" class="fa fa-eye eye-icon" onclick="togglePasswordVisibility()"></i>
                 </div>
                 <button type="submit">Log In</button>
             </form>
@@ -134,43 +136,5 @@
     <footer>
         &copy; 2024 Skin Analysis. All Rights Reserved.
     </footer>
-
-    <script>
-        function login(event) {
-            event.preventDefault(); // Prevent form submission
-
-            const username = document.querySelector('[name="username"]').value;
-            const password = document.querySelector('[name="password"]').value;
-            
-            // Get all users from localStorage
-            let users = JSON.parse(localStorage.getItem('users')) || [];
-
-            // Check if user exists and password matches
-            const user = users.find(user => user.username === username && user.password === password);
-            
-            if (user) {
-                // Redirect to profile page after successful login
-                window.location.href = '/profile'; // Change '/profile' to the actual URL of your profile page
-            } else {
-                const errorDiv = document.querySelector('.error');
-                errorDiv.textContent = 'Invalid username or password';
-            }
-        }
-
-        function togglePasswordVisibility() {
-            const passwordField = document.querySelector('[name="password"]');
-            const eyeIcon = document.getElementById('eye-icon');
-            
-            if (passwordField.type === 'password') {
-                passwordField.type = 'text';
-                eyeIcon.classList.remove('fa-eye');
-                eyeIcon.classList.add('fa-eye-slash');
-            } else {
-                passwordField.type = 'password';
-                eyeIcon.classList.remove('fa-eye-slash');
-                eyeIcon.classList.add('fa-eye');
-            }
-        }
-    </script>
 </body>
 </html>
