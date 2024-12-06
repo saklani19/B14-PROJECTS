@@ -16,6 +16,9 @@ def home(request):
 
 
 def login(request):
+    if request.user.is_authenticated:
+        return redirect('/profile')  # Redirect to profile if already logged in
+
     if request.method == "POST":
         un = request.POST['username']
         pw = request.POST['password']
@@ -33,6 +36,9 @@ def login(request):
 
 
 def signup(request):
+    if request.user.is_authenticated:
+        return redirect('/profile')  # Redirect to profile if already logged in
+
     if request.method == "POST":
         form = UserCreationForm(request.POST)
         if form.is_valid():
