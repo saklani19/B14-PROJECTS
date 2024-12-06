@@ -17,6 +17,48 @@
 
             background-color: #d9fff4;
         }
+        .navbar {
+            position: fixed; /* Makes the navbar stick to the top */
+            top: 0;
+            left: 0;
+            width: 100%; /* Spans the entire width of the page */
+            background-color: #2ECC71;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 1000; /* Ensures it stays above other elements */
+            box-sizing: border-box; /* Ensures padding doesn't cause layout issues */
+        }
+
+        .navbar h1 {
+            color: white;
+            margin: 0;
+            font-size: 1.8em;
+            font-weight: bold;
+            white-space: nowrap; /* Prevents text wrapping for long project names */
+        }
+
+        .navbar form {
+            margin: 0;
+        }
+
+        .navbar button {
+            background-color: #E74C3C;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            white-space: nowrap; /* Prevents text wrapping on the button */
+        }
+
+        .navbar button:hover {
+            background-color: #C0392B;
+        }
+
         .container {
             width: 70%;
             margin: auto;
@@ -29,12 +71,21 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
+
+            margin-top: 80px; /* Adjusted top margin for the navbar height */
         }
         h2 {
             color: #2C3E50;
             font-size: 3em; /* Increased size for heading */
             font-weight: bold;
             text-align: center; /* Centers the heading */
+        }
+        #description {
+            color: #2C3E50;
+            font-size: 2em;
+            font-weight: normal;
+            text-align: justify; /* Centers the heading */
+            max-width: 50ch;
         }
         .image-container {
             text-align: center;
@@ -89,11 +140,45 @@
         input[type="submit"]:hover {
             background-color: #27AE60;
         }
+
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column; /* Stack items vertically on smaller screens */
+                padding: 15px; /* Adjust padding for smaller screens */
+            }
+            .navbar h1 {
+                font-size: 1.5em; /* Slightly reduce font size for small screens */
+                margin-bottom: 10px;
+            }
+            .navbar button {
+                align-self: flex-end; /* Align button to the right */
+                padding: 8px 15px; /* Reduce padding for small screens */
+            }
+            .container {
+                width: 90%; /* Increase width for smaller screens */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar h1 {
+                font-size: 1.2em; /* Further reduce font size for very small screens */
+            }
+            .navbar button {
+                font-size: 0.9em; /* Adjust button font size */
+                padding: 6px 12px; /* Further reduce padding */
+            }
+        }
     </style>
 </head>
 <body>
+    <div class="navbar">
+        <h1>Skin Pro</h1>
+        <form action="{% url 'logout' %}" method="post">
+            {% csrf_token %}
+            <button type="submit">Logout</button>
+        </form>
+    </div>
     <div class="container">
-        <h2>Skin Pro</h2>
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <div style="display: flex; justify-content: center; align-items: center;">
@@ -114,9 +199,9 @@
             {% if obj1 %}
                 <h2>{{ obj1 }}</h2>
             {% endif %}
-            <br><br>
+            <br>
             {% if obj2 %}
-                <h2>{{ obj2 }}</h2>
+                <h2 id="description">{{ obj2 }}</h2>
             {% endif %}
         </div>
     </div>

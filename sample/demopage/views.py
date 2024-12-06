@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import authenticate, login as auth_login
+from django.contrib.auth import logout as auth_logout
 from django.contrib.auth.decorators import login_required
-from django.conf import settings
 from django.core.files.storage import FileSystemStorage
 import cv2
 import numpy as np
@@ -135,3 +135,8 @@ def profile(request):
             result2 = diagnosis[predict]
  
     return render(request,'profile.html',{'img':img_url,'obj1':result1,'obj2':result2})
+
+
+def logout(request):
+    auth_logout(request)
+    return redirect('/login') 
